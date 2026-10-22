@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Design Reference Studio — Agent Visual Vault (5,929 Works)</title>
+  <meta name="referrer" content="no-referrer">
+  <title>Design Reference Studio — 21,028 Curated Masterworks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090a0c;
       --surface: #121418;
-      --surface-elevated: #191c22;
-      --border: #242830;
-      --border-hover: #3a404d;
+      --surface-elevated: #1a1d24;
+      --border: #232730;
+      --border-hover: #3b4252;
       --text: #f3f4f6;
       --text-muted: #9ca3af;
       --accent: #ff3b30;
       --accent-hover: #e02e24;
       --purple: #8b5cf6;
-      --purple-hover: #7c3aed;
       --green: #10b981;
+      --blue: #3b82f6;
       --radius: 10px;
     }
 
@@ -38,10 +39,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(12, 14, 17, 0.92);
-      backdrop-filter: blur(16px);
+      background: rgba(12, 14, 18, 0.94);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
-      padding: 16px 28px;
+      padding: 14px 28px 12px;
     }
 
     .topbar {
@@ -49,8 +50,8 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 14px;
+      gap: 14px;
+      margin-bottom: 12px;
     }
 
     .brand {
@@ -71,7 +72,7 @@
     }
     .brand h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       letter-spacing: -0.4px;
     }
@@ -83,7 +84,6 @@
       flex-wrap: wrap;
     }
 
-    /* Randomizer Action Buttons */
     .rand-group {
       display: inline-flex;
       gap: 8px;
@@ -93,23 +93,20 @@
       background: linear-gradient(135deg, #ff3b30 0%, #ff6b3d 100%);
       color: #fff;
       border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
+      padding: 7px 13px;
+      border-radius: 7px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 4px 14px rgba(255, 59, 48, 0.3);
+      box-shadow: 0 4px 14px rgba(255, 59, 48, 0.28);
       transition: transform 0.15s, box-shadow 0.15s;
     }
     .btn-rand:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(255, 59, 48, 0.45);
-    }
-    .btn-rand:active {
-      transform: scale(0.97);
+      box-shadow: 0 6px 18px rgba(255, 59, 48, 0.4);
     }
     .btn-rand.secondary {
       background: var(--surface-elevated);
@@ -126,16 +123,16 @@
       display: inline-flex;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 7px;
       padding: 3px;
     }
     .mode-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 12.5px;
+      padding: 5px 11px;
+      border-radius: 5px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
@@ -149,23 +146,74 @@
     .stat-badge {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 7px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-size: 12px;
       color: var(--text-muted);
     }
     .stat-badge strong { color: #fff; }
 
-    /* Search & Filter Controls */
-    .controls {
+    /* Category Navigation Bar (Types) */
+    .type-nav-wrap {
+      margin-bottom: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 2px;
+    }
+    .type-nav-wrap::-webkit-scrollbar { display: none; }
+    .type-nav {
+      display: flex;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .type-tab {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 13px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .type-tab:hover {
+      color: #fff;
+      border-color: var(--border-hover);
+      background: var(--surface-elevated);
+    }
+    .type-tab.active {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+      font-weight: 700;
+    }
+    .type-tab .tab-count {
+      font-size: 10.5px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      color: inherit;
+    }
+    .type-tab.active .tab-count {
+      background: rgba(0,0,0,0.15);
+      color: #000;
+    }
+
+    /* Search & Sub-Filter Bar */
+    .subbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
     }
     .search-wrap {
       flex: 1;
-      min-width: 240px;
+      min-width: 260px;
       position: relative;
     }
     .search-wrap input {
@@ -173,59 +221,51 @@
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 10px 14px 10px 38px;
-      border-radius: 8px;
-      font-size: 13.5px;
+      padding: 8px 12px 8px 34px;
+      border-radius: 7px;
+      font-size: 13px;
       outline: none;
       transition: border-color 0.2s;
     }
     .search-wrap input:focus { border-color: var(--accent); }
     .search-wrap .icon {
       position: absolute;
-      left: 12px;
+      left: 11px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    .collection-pills {
+    .source-select-wrap {
       display: flex;
+      align-items: center;
       gap: 6px;
-      flex-wrap: wrap;
     }
-    .pill {
+    .source-select {
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 8px 13px;
+      padding: 8px 12px;
       border-radius: 7px;
       font-size: 12px;
       font-weight: 600;
+      outline: none;
       cursor: pointer;
-      transition: all 0.15s;
     }
-    .pill:hover {
-      border-color: var(--border-hover);
-      color: #fff;
-    }
-    .pill.active {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-    }
+    .source-select:focus { border-color: var(--accent); color: #fff; }
 
     /* Main Grid */
     main {
-      padding: 24px 28px 120px;
+      padding: 20px 28px 120px;
       max-width: 1920px;
       margin: 0 auto;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 18px;
     }
 
     .card {
@@ -237,7 +277,7 @@
       flex-direction: column;
       transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
       position: relative;
-      animation: fadeIn 0.25s ease;
+      animation: fadeIn 0.22s ease;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
@@ -246,20 +286,26 @@
     .card:hover {
       transform: translateY(-3px);
       border-color: var(--border-hover);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.5);
     }
     .card.selected {
       border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(255, 59, 48, 0.35);
+      box-shadow: 0 0 0 2px rgba(255, 59, 48, 0.4);
     }
 
+    /* Neutral backdrop for transparent PNGs & SVGs */
     .card-media {
       width: 100%;
       aspect-ratio: 4/5;
-      background: #0d0f12;
+      background: #14171d;
+      background-image: radial-gradient(#1f242d 1px, transparent 1px);
+      background-size: 16px 16px;
       position: relative;
       overflow: hidden;
       cursor: zoom-in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .card-media img {
       width: 100%;
@@ -273,40 +319,56 @@
 
     .badge-row {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
+      top: 8px;
+      left: 8px;
+      right: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       pointer-events: none;
+      z-index: 2;
     }
-    .source-tag {
-      background: rgba(9, 10, 12, 0.78);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.12);
+    .tag-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+    .type-badge {
+      background: rgba(255, 59, 48, 0.92);
       color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 5px;
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 3px 6px;
+      border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
+    }
+    .source-badge {
+      background: rgba(12, 14, 18, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e5e7eb;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
     }
     .local-indicator {
-      background: rgba(16, 185, 129, 0.9);
+      background: rgba(16, 185, 129, 0.95);
       color: #000;
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 800;
-      padding: 3px 7px;
+      padding: 2px 6px;
       border-radius: 4px;
       text-transform: uppercase;
     }
 
     .select-check {
       pointer-events: auto;
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 6px;
       background: rgba(9, 10, 12, 0.8);
       border: 1px solid rgba(255,255,255,0.25);
@@ -315,7 +377,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       transition: all 0.15s;
     }
@@ -347,19 +409,19 @@
       overflow: hidden;
     }
 
-    /* Quick Agent Copy Bar on Every Card */
+    /* Quick Agent Copy Buttons */
     .agent-actions {
       display: grid;
       grid-template-columns: 1.2fr 1fr 0.8fr;
-      gap: 6px;
+      gap: 5px;
     }
     .act-btn {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 7px 8px;
+      padding: 6px 7px;
       border-radius: 6px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -370,7 +432,7 @@
       white-space: nowrap;
     }
     .act-btn:hover {
-      background: #252a34;
+      background: #232833;
       border-color: var(--border-hover);
     }
     .act-btn.primary {
@@ -395,7 +457,7 @@
       color: #fff;
       padding: 12px 28px;
       border-radius: 8px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
@@ -411,10 +473,10 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(150%);
-      background: rgba(20, 23, 29, 0.96);
+      background: rgba(18, 21, 27, 0.96);
       backdrop-filter: blur(20px);
       border: 1px solid var(--accent);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.75);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
       border-radius: 14px;
       padding: 12px 20px;
       display: flex;
@@ -429,7 +491,7 @@
     .dock-thumbs {
       display: flex;
       gap: 6px;
-      max-width: 320px;
+      max-width: 300px;
       overflow-x: auto;
     }
     .dock-thumbs img {
@@ -443,9 +505,9 @@
       background: var(--accent);
       color: #fff;
       border: none;
-      padding: 10px 16px;
+      padding: 10px 15px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
@@ -460,13 +522,13 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(5, 6, 8, 0.92);
+      background: rgba(5, 6, 8, 0.94);
       backdrop-filter: blur(18px);
       z-index: 500;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 28px;
+      padding: 24px;
     }
     .modal-backdrop.open { display: flex; }
     .modal {
@@ -478,11 +540,13 @@
       max-height: 90vh;
       display: flex;
       overflow: hidden;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.8);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.85);
     }
     .modal-left {
       flex: 2;
-      background: #060708;
+      background: #090b0e;
+      background-image: radial-gradient(#181d24 1px, transparent 1px);
+      background-size: 20px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -498,8 +562,8 @@
     .modal-right {
       flex: 1;
       min-width: 360px;
-      max-width: 430px;
-      padding: 28px;
+      max-width: 440px;
+      padding: 26px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -521,7 +585,7 @@
     }
     .modal-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 700;
       line-height: 1.35;
     }
@@ -545,7 +609,7 @@
     .modal-btn {
       padding: 11px 16px;
       border-radius: 8px;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       border: 1px solid var(--border);
@@ -564,10 +628,6 @@
       border-color: var(--accent);
     }
     .modal-btn.primary:hover { background: var(--accent-hover); }
-    .modal-btn.rand-next {
-      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-      border: none;
-    }
 
     /* Toast Notification */
     .toast {
@@ -610,7 +670,6 @@
       </div>
 
       <div class="header-right">
-        <!-- Randomizer Suite -->
         <div class="rand-group">
           <button class="btn-rand" onclick="shuffleGallery()" title="Shuffle the entire grid randomly (Shortcut: press R)">
             🎲 Shuffle Grid
@@ -624,8 +683,8 @@
         </div>
 
         <div class="mode-switch">
-          <button class="mode-btn active" id="btnModeLocal" onclick="setViewMode('local')">⚡ Local Disk (<span id="localCountTxt">579</span>)</button>
-          <button class="mode-btn" id="btnModeAll" onclick="setViewMode('all')">🌐 All Catalog (<span id="totalCountTxt">5,929</span>)</button>
+          <button class="mode-btn active" id="btnModeLocal" onclick="setViewMode('local')">⚡ Local Disk (<span id="localCountTxt">849</span>)</button>
+          <button class="mode-btn" id="btnModeAll" onclick="setViewMode('all')">🌐 All Catalog (<span id="totalCountTxt">21,028</span>)</button>
         </div>
         <div class="stat-badge" id="showingBadge">
           Showing <strong>0</strong> works
@@ -633,22 +692,68 @@
       </div>
     </div>
 
-    <div class="controls">
+    <!-- PRIMARY CATEGORY TABS (DESIGN TYPES) -->
+    <div class="type-nav-wrap">
+      <div class="type-nav" id="typeNav">
+        <button class="type-tab active" data-type="all">
+          <span>✨ All Types</span>
+          <span class="tab-count" id="countAll">21,028</span>
+        </button>
+        <button class="type-tab" data-type="Posters & Flyers">
+          <span>🖼️ Posters & Flyers</span>
+          <span class="tab-count" id="countPosters">8,262</span>
+        </button>
+        <button class="type-tab" data-type="Typography & Type Specimens">
+          <span>🔤 Typography & Lettering</span>
+          <span class="tab-count" id="countType">8,921</span>
+        </button>
+        <button class="type-tab" data-type="Books & Editorial">
+          <span>📖 Books & Editorial</span>
+          <span class="tab-count" id="countBooks">4,230</span>
+        </button>
+        <button class="type-tab" data-type="Swiss, Bauhaus & Abstract">
+          <span>📐 Swiss, Bauhaus & Modern</span>
+          <span class="tab-count" id="countSwiss">3,593</span>
+        </button>
+        <button class="type-tab" data-type="Packaging, Logos & Ephemera">
+          <span>📦 Packaging & Ephemera</span>
+          <span class="tab-count" id="countPack">8,079</span>
+        </button>
+        <button class="type-tab" data-type="Album Covers & Music">
+          <span>💿 Album Art & Music</span>
+          <span class="tab-count" id="countMusic">1,031</span>
+        </button>
+        <button class="type-tab" data-type="Japanese Design & Prints">
+          <span>🇯🇵 Japanese Graphic Design</span>
+          <span class="tab-count" id="countJapan">746</span>
+        </button>
+        <button class="type-tab" data-type="Illustration & Vintage Art">
+          <span>🎨 Illustration & Prints</span>
+          <span class="tab-count" id="countArt">3,794</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SUB-BAR: SEARCH & COLLECTION/SOURCE FILTER -->
+    <div class="subbar">
       <div class="search-wrap">
         <span class="icon">&#128269;</span>
-        <input type="text" id="searchInput" placeholder="Search by designer (Neville Brody, Karel Martens, Glaser), style (Bauhaus, Swiss, 1970, Poster, Typography)...">
+        <input type="text" id="searchInput" placeholder="Search by designer (Brody, Karel Martens, Glaser), style (Grid, Bauhaus, Minimal, Punk), font, or keyword...">
       </div>
-      <div class="collection-pills" id="pillsContainer">
-        <button class="pill active" data-source="all">All Sources</button>
-        <button class="pill" data-source="Design Reviewed">Design Reviewed</button>
-        <button class="pill" data-source="Letterform Archive">Letterform Archive</button>
-        <button class="pill" data-source="Fonts In Use">Fonts In Use</button>
-        <button class="pill" data-source="V&A Museum">V&A Museum London</button>
-        <button class="pill" data-source="Cleveland Museum">Cleveland Museum</button>
-        <button class="pill" data-source="Artvee">Artvee Posters & Art</button>
-        <button class="pill" data-source="Vol.co">Vol.co Spreads</button>
-        <button class="pill" data-source="Gurafiku">Gurafiku Japanese</button>
-        <button class="pill" data-source="Milton Glaser">Milton Glaser</button>
+
+      <div class="source-select-wrap">
+        <select class="source-select" id="sourceSelect">
+          <option value="all">🏛️ All Museum Archives & Sources</option>
+          <option value="Letterform Archive">Letterform Archive (4,990)</option>
+          <option value="V&A Museum">V&A Museum London (4,277)</option>
+          <option value="Fonts In Use">Fonts In Use (4,075)</option>
+          <option value="Design Reviewed">Design Reviewed (2,499)</option>
+          <option value="Artvee">Artvee Vintage & Modernist (3,997)</option>
+          <option value="Cleveland Museum">Cleveland Museum Open Access (1,632)</option>
+          <option value="Vol.co">Vol.co Design Reviewed Spreads (28)</option>
+          <option value="Gurafiku">Gurafiku Modern Japanese (20)</option>
+          <option value="Milton Glaser">Milton Glaser Landmark Archive (4)</option>
+        </select>
       </div>
     </div>
   </header>
@@ -664,7 +769,7 @@
   <!-- Floating Moodboard Dock for Multi-Image Agent Prompts -->
   <div class="moodboard-dock" id="moodboardDock">
     <div>
-      <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase;">Agent Moodboard</div>
+      <div style="font-size: 11.5px; font-weight: 700; color: var(--accent); text-transform: uppercase;">Agent Moodboard</div>
       <div style="font-size: 13px; font-weight: 600;" id="moodboardCount">0 references selected</div>
     </div>
     <div class="dock-thumbs" id="dockThumbs"></div>
@@ -678,14 +783,17 @@
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal">
       <div class="modal-left">
-        <img id="modalImg" src="" alt="">
+        <img id="modalImg" src="" alt="" referrerpolicy="no-referrer" onerror="handleModalImgError(this)">
       </div>
       <div class="modal-right">
         <div class="modal-top-actions">
-          <button class="btn-rand" onclick="openRandomSpotlight()" style="padding: 6px 12px; font-size: 12px;">🎲 Next Random Reference</button>
+          <button class="btn-rand" onclick="openRandomSpotlight()" style="padding: 6px 12px; font-size: 12px;">🎲 Next Random</button>
           <button class="modal-close" onclick="closeModal()">&times;</button>
         </div>
-        <div id="modalSource" style="font-size:11.5px; font-weight:700; color:var(--accent); text-transform:uppercase;"></div>
+        <div style="display:flex; gap:6px; align-items:center;">
+          <span class="type-badge" id="modalTypeBadge">TYPE</span>
+          <span class="source-badge" id="modalSourceBadge">SOURCE</span>
+        </div>
         <div class="modal-title" id="modalTitle"></div>
 
         <div>
@@ -711,7 +819,8 @@
   <script>
     let allItems = [];
     let filteredItems = [];
-    let viewMode = 'local'; // 'local' or 'all'
+    let viewMode = 'all'; // default to 'all' on Cloud, 'local' on localhost if available
+    let activeType = 'all';
     let activeSource = 'all';
     let searchQuery = '';
     let renderedCount = 0;
@@ -753,7 +862,7 @@
         } catch (e2) {}
       }
 
-      // Ensure fallback path fields exist when loaded from static JSON on Vercel
+      // Ensure fallback path fields exist
       allItems.forEach(it => {
         if (!it.local_file_path) {
           it.local_file_path = `C:\\Users\\monir\\.gemini\\antigravity\\scratch\\design_scraper\\downloads\\${it.folder || 'general'}\\${it.filename || 'ref.jpg'}`;
@@ -763,18 +872,18 @@
         }
       });
 
-      // Shuffle on initial load so every session mixes all collections!
+      // Shuffle on initial load
       fisherYatesShuffle(allItems);
 
       const localItems = allItems.filter(i => i.is_local);
       document.getElementById('localCountTxt').textContent = localItems.length.toLocaleString();
       document.getElementById('totalCountTxt').textContent = allItems.length.toLocaleString();
 
-      if (localItems.length === 0) {
+      if (localItems.length === 0 || !isLocalhost) {
         document.getElementById('btnModeLocal').style.display = 'none';
         setViewMode('all');
       } else {
-        applyFilters();
+        setViewMode('local');
       }
     }
 
@@ -789,22 +898,34 @@
       const q = searchQuery.toLowerCase();
       filteredItems = allItems.filter(item => {
         if (viewMode === 'local' && !item.is_local) return false;
-        if (activeSource !== 'all' && !(item.source || '').toLowerCase().includes(activeSource.toLowerCase())) return false;
+
+        // 1. Filter by Design Type
+        if (activeType !== 'all') {
+          const types = item.design_types || [item.design_type || ''];
+          if (!types.includes(activeType)) return false;
+        }
+
+        // 2. Filter by Source
+        if (activeSource !== 'all') {
+          const src = (item.source || '').toLowerCase();
+          if (!src.includes(activeSource.toLowerCase())) return false;
+        }
+
+        // 3. Search query
         if (q) {
-          const hay = `${item.title || ''} ${item.source || ''} ${item.category || ''} ${item.filename || ''}`.toLowerCase();
+          const hay = `${item.title || ''} ${item.source || ''} ${item.category || ''} ${item.design_type || ''} ${item.filename || ''}`.toLowerCase();
           if (!hay.includes(q)) return false;
         }
         return true;
       });
 
-      document.getElementById('showingBadge').innerHTML = `Showing <strong>${filteredItems.length.toLocaleString()}</strong> references`;
+      document.getElementById('showingBadge').innerHTML = `Showing <strong>${filteredItems.length.toLocaleString()}</strong> works`;
       const grid = document.getElementById('grid');
       grid.innerHTML = '';
       renderedCount = 0;
       renderNextBatch();
     }
 
-    // 1. Shuffle Grid Action
     function shuffleGallery() {
       fisherYatesShuffle(filteredItems);
       const grid = document.getElementById('grid');
@@ -815,7 +936,6 @@
       showToast(`🎲 Shuffled ${filteredItems.length.toLocaleString()} references!`);
     }
 
-    // 2. Surprise Me (Single Random Masterwork in Lightbox)
     function openRandomSpotlight() {
       const pool = filteredItems.length > 0 ? filteredItems : allItems;
       if (pool.length === 0) return;
@@ -823,7 +943,6 @@
       openModal(randomItem);
     }
 
-    // 3. Random 4-Pack Moodboard Generator
     function pickRandomMoodboard(count = 4) {
       const pool = filteredItems.length > 0 ? [...filteredItems] : [...allItems];
       if (pool.length === 0) return;
@@ -846,6 +965,25 @@
       return item.thumbnail_url || item.image_url;
     }
 
+    // Auto-fallback image error handler (handles hotlink / Referer blocks)
+    function handleCardImgError(img) {
+      if (!img.dataset.proxyTried && img.dataset.remoteSrc) {
+        img.dataset.proxyTried = "1";
+        img.src = `/api/proxy?url=${encodeURIComponent(img.dataset.remoteSrc)}`;
+      } else {
+        // Hide card if image completely dead
+        const card = img.closest('.card');
+        if (card) card.style.display = 'none';
+      }
+    }
+
+    function handleModalImgError(img) {
+      if (!img.dataset.proxyTried && img.dataset.remoteSrc) {
+        img.dataset.proxyTried = "1";
+        img.src = `/api/proxy?url=${encodeURIComponent(img.dataset.remoteSrc)}`;
+      }
+    }
+
     function renderNextBatch() {
       const grid = document.getElementById('grid');
       const slice = filteredItems.slice(renderedCount, renderedCount + PAGE_SIZE);
@@ -855,17 +993,21 @@
         card.dataset.id = item.id;
 
         const imgUrl = getDisplayUrl(item);
+        const primaryType = item.design_type || 'Design';
 
         card.innerHTML = `
           <div class="card-media">
             <div class="badge-row">
-              <span class="source-tag">${item.source}</span>
+              <div class="tag-stack">
+                <span class="type-badge">${primaryType}</span>
+                <span class="source-badge">${item.source}</span>
+              </div>
               <div style="display:flex; gap:6px; align-items:center;">
                 ${item.is_local ? '<span class="local-indicator">LOCAL</span>' : ''}
                 <div class="select-check" title="Select for Agent Moodboard">&#10003;</div>
               </div>
             </div>
-            <img loading="lazy" src="${imgUrl}" alt="${(item.title || '').replace(/"/g, '&quot;')}">
+            <img loading="lazy" src="${imgUrl}" alt="${(item.title || '').replace(/"/g, '&quot;')}" referrerpolicy="no-referrer" data-remote-src="${item.image_url || imgUrl}" onerror="handleCardImgError(this)">
           </div>
           <div class="card-body">
             <div class="card-title" title="${(item.title || '').replace(/"/g, '&quot;')}">${item.title}</div>
@@ -968,7 +1110,7 @@
 
     async function copyAgentPrompt(item) {
       await ensureItemLocal(item);
-      const prompt = `Use this design reference as visual inspiration:\n- Title: ${item.title}\n- Collection: ${item.source} (${item.category})\n- Local File Path: ${item.local_file_path}\n- Markdown Link: [${item.title}](${item.file_uri})`;
+      const prompt = `Use this design reference as visual inspiration:\n- Type: ${item.design_type || 'Design'}\n- Title: ${item.title}\n- Collection: ${item.source}\n- Local Path: ${item.local_file_path}\n- Markdown Link: [${item.title}](${item.file_uri})`;
       await navigator.clipboard.writeText(prompt);
       showToast('🤖 Copied Agent Reference Prompt + Local File Path!');
     }
@@ -1022,7 +1164,7 @@
         ``
       ];
       items.forEach((it, idx) => {
-        lines.push(`${idx + 1}. **${it.title}** (${it.source} — ${it.category})`);
+        lines.push(`${idx + 1}. **${it.title}** [${it.design_type || 'Design'}] (${it.source})`);
         lines.push(`   - Local File: \`${it.local_file_path}\``);
         lines.push(`   - Link: [View Reference](${it.file_uri})`);
       });
@@ -1048,12 +1190,17 @@
 
     function openModal(item) {
       const backdrop = document.getElementById('modalBackdrop');
-      document.getElementById('modalImg').src = getDisplayUrl(item);
-      document.getElementById('modalSource').textContent = `${item.source} • ${item.category}`;
+      const modalImg = document.getElementById('modalImg');
+      modalImg.dataset.proxyTried = "";
+      modalImg.dataset.remoteSrc = item.image_url;
+      modalImg.src = getDisplayUrl(item);
+
+      document.getElementById('modalTypeBadge').textContent = item.design_type || 'DESIGN';
+      document.getElementById('modalSourceBadge').textContent = item.source;
       document.getElementById('modalTitle').textContent = item.title;
       document.getElementById('modalPath').textContent = item.local_file_path;
       document.getElementById('modalPromptPreview').textContent =
-        `Use this design reference:\nTitle: ${item.title}\nSource: ${item.source}\nFile: ${item.local_file_path}`;
+        `Use this design reference:\nType: ${item.design_type || 'Design'}\nTitle: ${item.title}\nSource: ${item.source}\nFile: ${item.local_file_path}`;
       document.getElementById('modalBtnOpenOrig').href = item.image_url;
 
       const btnImg = document.getElementById('modalBtnCopyImg');
@@ -1073,9 +1220,8 @@
       if (e.target.id === 'modalBackdrop') closeModal();
     });
 
-    // Keyboard shortcuts: Escape closes modal, 'R' shuffles or picks next random in modal
     document.addEventListener('keydown', (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
       if (e.key === 'Escape') closeModal();
       if (e.key.toLowerCase() === 'r') {
         const isOpen = document.getElementById('modalBackdrop').classList.contains('open');
@@ -1087,17 +1233,25 @@
       }
     });
 
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      searchQuery = e.target.value.trim();
+    // Type Tabs Listener
+    document.getElementById('typeNav').addEventListener('click', (e) => {
+      const btn = e.target.closest('.type-tab');
+      if (!btn) return;
+      document.querySelectorAll('.type-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeType = btn.dataset.type;
       applyFilters();
     });
 
-    document.getElementById('pillsContainer').addEventListener('click', (e) => {
-      const btn = e.target.closest('.pill');
-      if (!btn) return;
-      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      activeSource = btn.dataset.source;
+    // Source Dropdown Listener
+    document.getElementById('sourceSelect').addEventListener('change', (e) => {
+      activeSource = e.target.value;
+      applyFilters();
+    });
+
+    // Search Listener
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
       applyFilters();
     });
 

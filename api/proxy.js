@@ -11,12 +11,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-        'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
-      }
-    });
+    const reqHeaders = {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    };
+
+    if (url.includes('artvee.com')) {
+      reqHeaders['Referer'] = 'https://artvee.com/';
+    } else if (url.includes('letterformarchive.org')) {
+      reqHeaders['Referer'] = 'https://letterformarchive.org/';
+    } else if (url.includes('designreviewed.com')) {
+      reqHeaders['Referer'] = 'https://designreviewed.com/';
+    } else if (url.includes('fontsinuse.com')) {
+      reqHeaders['Referer'] = 'https://fontsinuse.com/';
+    }
+
+    const response = await fetch(url, { headers: reqHeaders });
 
     if (!response.ok) {
       return res.status(response.status).json({ error: `Upstream returned ${response.status}` });
