@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Reference Studio — Agent Visual Vault (5,929 Works)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a0c;
+      --surface: #121418;
+      --surface-elevated: #191c22;
+      --border: #242830;
+      --border-hover: #3a404d;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #ff3b30;
+      --accent-hover: #e02e24;
+      --purple: #8b5cf6;
+      --purple-hover: #7c3aed;
+      --green: #10b981;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(12, 14, 17, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 28px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-tag {
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .brand h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Randomizer Action Buttons */
+    .rand-group {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn-rand {
+      background: linear-gradient(135deg, #ff3b30 0%, #ff6b3d 100%);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(255, 59, 48, 0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-rand:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 59, 48, 0.45);
+    }
+    .btn-rand:active {
+      transform: scale(0.97);
+    }
+    .btn-rand.secondary {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      box-shadow: none;
+      color: #e5e7eb;
+    }
+    .btn-rand.secondary:hover {
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+    }
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mode-btn.active {
+      background: var(--surface-elevated);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .stat-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .stat-badge strong { color: #fff; }
+
+    /* Search & Filter Controls */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .search-wrap {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+    .search-wrap input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px 10px 38px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-wrap input:focus { border-color: var(--accent); }
+    .search-wrap .icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .collection-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 13px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pill:hover {
+      border-color: var(--border-hover);
+      color: #fff;
+    }
+    .pill.active {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+
+    /* Main Grid */
+    main {
+      padding: 24px 28px 120px;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-hover);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+    }
+    .card.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(255, 59, 48, 0.35);
+    }
+
+    .card-media {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #0d0f12;
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .card:hover .card-media img {
+      transform: scale(1.03);
+    }
+
+    .badge-row {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+    }
+    .source-tag {
+      background: rgba(9, 10, 12, 0.78);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .local-indicator {
+      background: rgba(16, 185, 129, 0.9);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .select-check {
+      pointer-events: auto;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(9, 10, 12, 0.8);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.15s;
+    }
+    .select-check:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .card.selected .select-check {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .card-body {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.38;
+      color: #e5e7eb;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Quick Agent Copy Bar on Every Card */
+    .agent-actions {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 0.8fr;
+      gap: 6px;
+    }
+    .act-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 8px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .act-btn:hover {
+      background: #252a34;
+      border-color: var(--border-hover);
+    }
+    .act-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .act-btn.primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn-load-more {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-load-more:hover {
+      background: #252a34;
+      border-color: var(--border-hover);
+    }
+
+    /* Floating Moodboard Dock for Agents */
+    .moodboard-dock {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(150%);
+      background: rgba(20, 23, 29, 0.96);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--accent);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.75);
+      border-radius: 14px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 200;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .moodboard-dock.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+    .dock-thumbs {
+      display: flex;
+      gap: 6px;
+      max-width: 320px;
+      overflow-x: auto;
+    }
+    .dock-thumbs img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .dock-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .dock-btn:hover { background: var(--accent-hover); }
+    .dock-btn.secondary {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+    }
+
+    /* Lightbox Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 8, 0.92);
+      backdrop-filter: blur(18px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 1380px;
+      max-height: 90vh;
+      display: flex;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.8);
+    }
+    .modal-left {
+      flex: 2;
+      background: #060708;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+    .modal-left img {
+      max-width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .modal-right {
+      flex: 1;
+      min-width: 360px;
+      max-width: 430px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+      border-left: 1px solid var(--border);
+    }
+    .modal-top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .code-box {
+      background: #090a0c;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: #d1d5db;
+      word-break: break-all;
+      line-height: 1.45;
+    }
+    .modal-btn-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: auto;
+    }
+    .modal-btn {
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface-elevated);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .modal-btn:hover { background: #262b36; }
+    .modal-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .modal-btn.primary:hover { background: var(--accent-hover); }
+    .modal-btn.rand-next {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      border: none;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #052e16;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      z-index: 1000;
+      transform: translateY(-120%);
+      opacity: 0;
+      transition: all 0.22s ease;
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .modal { flex-direction: column; }
+      .modal-right { max-width: 100%; min-width: 100%; }
+      .modal-left img { max-height: 45vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toast" id="toast">Copied to Clipboard!</div>
+
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-tag">AGENT READY</span>
+        <h1>Design Reference Studio</h1>
+      </div>
+
+      <div class="header-right">
+        <!-- Randomizer Suite -->
+        <div class="rand-group">
+          <button class="btn-rand" onclick="shuffleGallery()" title="Shuffle the entire grid randomly (Shortcut: press R)">
+            🎲 Shuffle Grid
+          </button>
+          <button class="btn-rand secondary" onclick="openRandomSpotlight()" title="Pop open a single random masterpiece">
+            ✨ Surprise Me
+          </button>
+          <button class="btn-rand secondary" onclick="pickRandomMoodboard(4)" title="Auto-build a 4-image random moodboard for your Agent">
+            🎰 Random 4-Pack
+          </button>
+        </div>
+
+        <div class="mode-switch">
+          <button class="mode-btn active" id="btnModeLocal" onclick="setViewMode('local')">⚡ Local Disk (<span id="localCountTxt">579</span>)</button>
+          <button class="mode-btn" id="btnModeAll" onclick="setViewMode('all')">🌐 All Catalog (<span id="totalCountTxt">5,929</span>)</button>
+        </div>
+        <div class="stat-badge" id="showingBadge">
+          Showing <strong>0</strong> works
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <span class="icon">&#128269;</span>
+        <input type="text" id="searchInput" placeholder="Search by designer (Neville Brody, Karel Martens, Glaser), style (Bauhaus, Swiss, 1970, Poster, Typography)...">
+      </div>
+      <div class="collection-pills" id="pillsContainer">
+        <button class="pill active" data-source="all">All Sources</button>
+        <button class="pill" data-source="Design Reviewed">Design Reviewed</button>
+        <button class="pill" data-source="Letterform Archive">Letterform Archive</button>
+        <button class="pill" data-source="Fonts In Use">Fonts In Use</button>
+        <button class="pill" data-source="V&A Museum">V&A Museum London</button>
+        <button class="pill" data-source="Cleveland Museum">Cleveland Museum</button>
+        <button class="pill" data-source="Artvee">Artvee Posters & Art</button>
+        <button class="pill" data-source="Vol.co">Vol.co Spreads</button>
+        <button class="pill" data-source="Gurafiku">Gurafiku Japanese</button>
+        <button class="pill" data-source="Milton Glaser">Milton Glaser</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid" id="grid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display: none;">
+      <button class="btn-load-more" id="btnLoadMore">Load Next 100 References</button>
+      <button class="btn-rand" onclick="shuffleGallery()">🎲 Shuffle Again</button>
+    </div>
+  </main>
+
+  <!-- Floating Moodboard Dock for Multi-Image Agent Prompts -->
+  <div class="moodboard-dock" id="moodboardDock">
+    <div>
+      <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase;">Agent Moodboard</div>
+      <div style="font-size: 13px; font-weight: 600;" id="moodboardCount">0 references selected</div>
+    </div>
+    <div class="dock-thumbs" id="dockThumbs"></div>
+    <button class="dock-btn" onclick="copyMoodboardForAgent()">🤖 Copy Moodboard Prompt for Agent</button>
+    <button class="dock-btn secondary" onclick="copyMoodboardPaths()">📁 Copy All Paths</button>
+    <button class="dock-btn secondary" onclick="pickRandomMoodboard(4)">🎲 Re-Roll 4</button>
+    <button class="dock-btn secondary" onclick="clearMoodboard()">Clear</button>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-left">
+        <img id="modalImg" src="" alt="">
+      </div>
+      <div class="modal-right">
+        <div class="modal-top-actions">
+          <button class="btn-rand" onclick="openRandomSpotlight()" style="padding: 6px 12px; font-size: 12px;">🎲 Next Random Reference</button>
+          <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div id="modalSource" style="font-size:11.5px; font-weight:700; color:var(--accent); text-transform:uppercase;"></div>
+        <div class="modal-title" id="modalTitle"></div>
+
+        <div>
+          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase; font-weight:700; margin-bottom:5px;">Local File Path (For Coding Agents)</div>
+          <div class="code-box" id="modalPath"></div>
+        </div>
+
+        <div>
+          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase; font-weight:700; margin-bottom:5px;">Ready-to-Paste Agent Reference Prompt</div>
+          <div class="code-box" id="modalPromptPreview"></div>
+        </div>
+
+        <div class="modal-btn-stack">
+          <button class="modal-btn primary" id="modalBtnCopyImg">📋 Copy Actual Photo (Paste with Ctrl+V in Chat)</button>
+          <button class="modal-btn" id="modalBtnCopyAgent">🤖 Copy Agent Reference Prompt + Path</button>
+          <button class="modal-btn" id="modalBtnCopyPath">📁 Copy Local File Path Only</button>
+          <a class="modal-btn" id="modalBtnOpenOrig" href="" target="_blank" rel="noopener">↗ Open Original High-Res URL</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allItems = [];
+    let filteredItems = [];
+    let viewMode = 'local'; // 'local' or 'all'
+    let activeSource = 'all';
+    let searchQuery = '';
+    let renderedCount = 0;
+    const PAGE_SIZE = 100;
+
+    let selectedMap = new Map(); // id -> item
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+    }
+
+    function fisherYatesShuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    async function init() {
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      try {
+        if (isLocalhost) {
+          const res = await fetch('/api/catalog');
+          if (res.ok) allItems = await res.json();
+        }
+        if (!allItems || allItems.length === 0) {
+          const res2 = await fetch('/design_catalog.json');
+          if (res2.ok) allItems = await res2.json();
+        }
+      } catch (e) {
+        try {
+          const res3 = await fetch('design_catalog.json');
+          allItems = await res3.json();
+        } catch (e2) {}
+      }
+
+      // Ensure fallback path fields exist when loaded from static JSON on Vercel
+      allItems.forEach(it => {
+        if (!it.local_file_path) {
+          it.local_file_path = `C:\\Users\\monir\\.gemini\\antigravity\\scratch\\design_scraper\\downloads\\${it.folder || 'general'}\\${it.filename || 'ref.jpg'}`;
+        }
+        if (!it.file_uri) {
+          it.file_uri = it.image_url;
+        }
+      });
+
+      // Shuffle on initial load so every session mixes all collections!
+      fisherYatesShuffle(allItems);
+
+      const localItems = allItems.filter(i => i.is_local);
+      document.getElementById('localCountTxt').textContent = localItems.length.toLocaleString();
+      document.getElementById('totalCountTxt').textContent = allItems.length.toLocaleString();
+
+      if (localItems.length === 0) {
+        document.getElementById('btnModeLocal').style.display = 'none';
+        setViewMode('all');
+      } else {
+        applyFilters();
+      }
+    }
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      document.getElementById('btnModeLocal').classList.toggle('active', mode === 'local');
+      document.getElementById('btnModeAll').classList.toggle('active', mode === 'all');
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const q = searchQuery.toLowerCase();
+      filteredItems = allItems.filter(item => {
+        if (viewMode === 'local' && !item.is_local) return false;
+        if (activeSource !== 'all' && !(item.source || '').toLowerCase().includes(activeSource.toLowerCase())) return false;
+        if (q) {
+          const hay = `${item.title || ''} ${item.source || ''} ${item.category || ''} ${item.filename || ''}`.toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('showingBadge').innerHTML = `Showing <strong>${filteredItems.length.toLocaleString()}</strong> references`;
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      renderedCount = 0;
+      renderNextBatch();
+    }
+
+    // 1. Shuffle Grid Action
+    function shuffleGallery() {
+      fisherYatesShuffle(filteredItems);
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      renderedCount = 0;
+      renderNextBatch();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast(`🎲 Shuffled ${filteredItems.length.toLocaleString()} references!`);
+    }
+
+    // 2. Surprise Me (Single Random Masterwork in Lightbox)
+    function openRandomSpotlight() {
+      const pool = filteredItems.length > 0 ? filteredItems : allItems;
+      if (pool.length === 0) return;
+      const randomItem = pool[Math.floor(Math.random() * pool.length)];
+      openModal(randomItem);
+    }
+
+    // 3. Random 4-Pack Moodboard Generator
+    function pickRandomMoodboard(count = 4) {
+      const pool = filteredItems.length > 0 ? [...filteredItems] : [...allItems];
+      if (pool.length === 0) return;
+      fisherYatesShuffle(pool);
+      selectedMap.clear();
+      document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
+
+      const chosen = pool.slice(0, count);
+      chosen.forEach(item => {
+        selectedMap.set(item.id, item);
+        const cardEl = document.querySelector(`.card[data-id="${item.id}"]`);
+        if (cardEl) cardEl.classList.add('selected');
+      });
+      updateMoodboardDock();
+      showToast(`🎰 Picked ${chosen.length} random references into your Agent Moodboard!`);
+    }
+
+    function getDisplayUrl(item) {
+      if (item.is_local && item.local_url) return item.local_url;
+      return item.thumbnail_url || item.image_url;
+    }
+
+    function renderNextBatch() {
+      const grid = document.getElementById('grid');
+      const slice = filteredItems.slice(renderedCount, renderedCount + PAGE_SIZE);
+      slice.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card' + (selectedMap.has(item.id) ? ' selected' : '');
+        card.dataset.id = item.id;
+
+        const imgUrl = getDisplayUrl(item);
+
+        card.innerHTML = `
+          <div class="card-media">
+            <div class="badge-row">
+              <span class="source-tag">${item.source}</span>
+              <div style="display:flex; gap:6px; align-items:center;">
+                ${item.is_local ? '<span class="local-indicator">LOCAL</span>' : ''}
+                <div class="select-check" title="Select for Agent Moodboard">&#10003;</div>
+              </div>
+            </div>
+            <img loading="lazy" src="${imgUrl}" alt="${(item.title || '').replace(/"/g, '&quot;')}">
+          </div>
+          <div class="card-body">
+            <div class="card-title" title="${(item.title || '').replace(/"/g, '&quot;')}">${item.title}</div>
+            <div class="agent-actions">
+              <button class="act-btn primary" title="Copy actual photo to clipboard so you can press Ctrl+V in Agent chat">📋 Copy Photo</button>
+              <button class="act-btn" title="Copy formatted Agent Reference Prompt + Local File Path">🤖 Agent Ref</button>
+              <button class="act-btn" title="Copy Windows local file path">📁 Path</button>
+            </div>
+          </div>
+        `;
+
+        card.querySelector('.card-media img').addEventListener('click', () => openModal(item));
+
+        card.querySelector('.select-check').addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleSelect(item, card);
+        });
+
+        const btns = card.querySelectorAll('.act-btn');
+        btns[0].addEventListener('click', (e) => { e.stopPropagation(); copyPhotoToClipboard(item, btns[0]); });
+        btns[1].addEventListener('click', (e) => { e.stopPropagation(); copyAgentPrompt(item); });
+        btns[2].addEventListener('click', (e) => { e.stopPropagation(); copyLocalPath(item); });
+
+        grid.appendChild(card);
+      });
+
+      renderedCount += slice.length;
+      const loadMoreWrap = document.getElementById('loadMoreWrap');
+      loadMoreWrap.style.display = renderedCount < filteredItems.length ? 'flex' : 'none';
+    }
+
+    async function ensureItemLocal(item) {
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (!isLocalhost) return item;
+      if (item.is_local && item.local_url) return item;
+      try {
+        showToast('Downloading high-res image to local disk...');
+        const res = await fetch('/api/ensure_local', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item)
+        });
+        const data = await res.json();
+        if (data.ok) {
+          item.is_local = true;
+          item.local_url = data.local_url;
+          item.local_file_path = data.local_file_path;
+          item.file_uri = data.file_uri;
+          const localItems = allItems.filter(i => i.is_local);
+          document.getElementById('localCountTxt').textContent = localItems.length.toLocaleString();
+        }
+      } catch (e) {}
+      return item;
+    }
+
+    async function copyPhotoToClipboard(item, btnEl) {
+      const origText = btnEl ? btnEl.innerHTML : '';
+      if (btnEl) btnEl.innerHTML = '⏳ Copying...';
+      try {
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        let srcUrl;
+        if (isLocalhost) {
+          await ensureItemLocal(item);
+          srcUrl = item.local_url || item.image_url;
+        } else {
+          const targetRemote = item.image_url || item.thumbnail_url;
+          srcUrl = `/api/proxy?url=${encodeURIComponent(targetRemote)}`;
+        }
+
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = srcUrl;
+        });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+
+        const pngBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': pngBlob })
+        ]);
+
+        showToast('✅ Photo Copied! Press Ctrl+V directly in Agent Chat!');
+        if (btnEl) {
+          btnEl.innerHTML = '✅ Copied!';
+          setTimeout(() => btnEl.innerHTML = origText, 1800);
+        }
+      } catch (err) {
+        console.error(err);
+        await copyAgentPrompt(item);
+        if (btnEl) btnEl.innerHTML = origText;
+      }
+    }
+
+    async function copyAgentPrompt(item) {
+      await ensureItemLocal(item);
+      const prompt = `Use this design reference as visual inspiration:\n- Title: ${item.title}\n- Collection: ${item.source} (${item.category})\n- Local File Path: ${item.local_file_path}\n- Markdown Link: [${item.title}](${item.file_uri})`;
+      await navigator.clipboard.writeText(prompt);
+      showToast('🤖 Copied Agent Reference Prompt + Local File Path!');
+    }
+
+    async function copyLocalPath(item) {
+      await ensureItemLocal(item);
+      await navigator.clipboard.writeText(item.local_file_path);
+      showToast('📁 Copied Local File Path: ' + item.filename);
+    }
+
+    function toggleSelect(item, cardEl) {
+      if (selectedMap.has(item.id)) {
+        selectedMap.delete(item.id);
+        cardEl.classList.remove('selected');
+      } else {
+        selectedMap.set(item.id, item);
+        cardEl.classList.add('selected');
+      }
+      updateMoodboardDock();
+    }
+
+    function updateMoodboardDock() {
+      const dock = document.getElementById('moodboardDock');
+      const countEl = document.getElementById('moodboardCount');
+      const thumbsEl = document.getElementById('dockThumbs');
+
+      if (selectedMap.size === 0) {
+        dock.classList.remove('visible');
+        return;
+      }
+      dock.classList.add('visible');
+      countEl.textContent = `${selectedMap.size} reference${selectedMap.size > 1 ? 's' : ''} selected`;
+      thumbsEl.innerHTML = '';
+      selectedMap.forEach(item => {
+        const im = document.createElement('img');
+        im.src = getDisplayUrl(item);
+        im.title = item.title;
+        im.style.cursor = 'pointer';
+        im.onclick = () => openModal(item);
+        thumbsEl.appendChild(im);
+      });
+    }
+
+    async function copyMoodboardForAgent() {
+      const items = Array.from(selectedMap.values());
+      for (const it of items) {
+        await ensureItemLocal(it);
+      }
+      const lines = [
+        `Here are ${items.length} curated design references to guide the visual direction, typography, and layout:`,
+        ``
+      ];
+      items.forEach((it, idx) => {
+        lines.push(`${idx + 1}. **${it.title}** (${it.source} — ${it.category})`);
+        lines.push(`   - Local File: \`${it.local_file_path}\``);
+        lines.push(`   - Link: [View Reference](${it.file_uri})`);
+      });
+      await navigator.clipboard.writeText(lines.join('\n'));
+      showToast(`🤖 Copied ${items.length} Moodboard References for Agent!`);
+    }
+
+    async function copyMoodboardPaths() {
+      const items = Array.from(selectedMap.values());
+      for (const it of items) {
+        await ensureItemLocal(it);
+      }
+      const paths = items.map(i => i.local_file_path).join('\n');
+      await navigator.clipboard.writeText(paths);
+      showToast(`📁 Copied ${items.length} Local File Paths!`);
+    }
+
+    function clearMoodboard() {
+      selectedMap.clear();
+      document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
+      updateMoodboardDock();
+    }
+
+    function openModal(item) {
+      const backdrop = document.getElementById('modalBackdrop');
+      document.getElementById('modalImg').src = getDisplayUrl(item);
+      document.getElementById('modalSource').textContent = `${item.source} • ${item.category}`;
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalPath').textContent = item.local_file_path;
+      document.getElementById('modalPromptPreview').textContent =
+        `Use this design reference:\nTitle: ${item.title}\nSource: ${item.source}\nFile: ${item.local_file_path}`;
+      document.getElementById('modalBtnOpenOrig').href = item.image_url;
+
+      const btnImg = document.getElementById('modalBtnCopyImg');
+      btnImg.onclick = () => copyPhotoToClipboard(item, btnImg);
+
+      document.getElementById('modalBtnCopyAgent').onclick = () => copyAgentPrompt(item);
+      document.getElementById('modalBtnCopyPath').onclick = () => copyLocalPath(item);
+
+      backdrop.classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modalBackdrop').classList.remove('open');
+    }
+
+    document.getElementById('modalBackdrop').addEventListener('click', (e) => {
+      if (e.target.id === 'modalBackdrop') closeModal();
+    });
+
+    // Keyboard shortcuts: Escape closes modal, 'R' shuffles or picks next random in modal
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key.toLowerCase() === 'r') {
+        const isOpen = document.getElementById('modalBackdrop').classList.contains('open');
+        if (isOpen) {
+          openRandomSpotlight();
+        } else {
+          shuffleGallery();
+        }
+      }
+    });
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      applyFilters();
+    });
+
+    document.getElementById('pillsContainer').addEventListener('click', (e) => {
+      const btn = e.target.closest('.pill');
+      if (!btn) return;
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      activeSource = btn.dataset.source;
+      applyFilters();
+    });
+
+    document.getElementById('btnLoadMore').addEventListener('click', renderNextBatch);
+
+    init();
+  </script>
+</body>
+</html>

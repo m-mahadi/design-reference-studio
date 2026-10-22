@@ -1,0 +1,15 @@
+downloads/
+__pycache__/
+*.tmp
+*.pyc
+dr_p1.json
+dr_test50.json
+lfa_p1.json
+sample_curl.json
+sample_dr.json
+test_curl_dl.jpg
+test_img.webp
+test_met.py
+test_sources.py
+inspect_nypl.py
+.vercel
